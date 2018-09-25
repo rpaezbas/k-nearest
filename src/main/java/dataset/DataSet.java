@@ -3,6 +3,7 @@ package dataset;
 import java.util.ArrayList;
 
 import exceptions.DataSetInitializationException;
+import exceptions.calculateNearestException;
 import vector.Vector;
 
 public class DataSet {
@@ -34,7 +35,11 @@ public class DataSet {
 		
 	}
 
-	public ArrayList<Vector> calculateNearest(Vector target, int k) {
+	public ArrayList<Vector> calculateNearest(Vector target, int k) throws calculateNearestException{
+		
+		if(k < 1 || k > this.vectors.size()) {
+			throw new calculateNearestException("k parameter must be a between 1 and the number of vectors in the dataset (vectors.size())");
+		}
 
 		float[] distances = this.calculateDistances(target);
 
