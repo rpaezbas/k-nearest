@@ -1,4 +1,4 @@
-package rest;
+package dataset;
 
 import javax.persistence.Entity;
 import vector.Vector;
