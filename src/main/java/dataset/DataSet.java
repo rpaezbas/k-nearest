@@ -41,49 +41,9 @@ public class DataSet {
 			throw new calculateNearestException("k parameter must be a between 1 and the number of vectors in the dataset (vectors.size())");
 		}
 
-		float[] distances = this.calculateDistances(target);
-
-		// Initialize minorDistances
-		float[] minorDistances = new float[k];
-		for (int i = 0; i < k; i++) {
-			minorDistances[i] = distances[i];
-		}
-
-		// Initialize kNearest list
-		ArrayList<Vector> kNearest = new ArrayList<Vector>();
-		for (int i = 0; i < k; i++) {
-			kNearest.add(this.vectors.get(i));
-		}
-
-		// Initially, minorDitances must be sorted from less to more
-		for (int i = 0; i < minorDistances.length; i++) {
-			for (int j = 0 + i; j < minorDistances.length; j++) {
-				if (minorDistances[i] > minorDistances[j]) {
-
-					// Exchange values
-					float aux = minorDistances[j];
-					minorDistances[j] = minorDistances[i];
-					minorDistances[i] = aux;
-
-					Vector auxVector = kNearest.get(j);
-					kNearest.set(j, kNearest.get(i));
-					kNearest.set(i, auxVector);
-				}
-			}
-		}
-
-		// Get vectors with less distance
-		for (int i = k; i < distances.length; i++) {
-			for (int j = 0; j < minorDistances.length; j++) {
-				if (distances[i] < minorDistances[j]) {
-					minorDistances[j] = distances[i];
-					kNearest.set(j, this.vectors.get(i));
-					break;
-				}
-			}
-		}
-
-		return kNearest;
+		ArrayList<Vector> sortedVectors = new ArrayList<>(this.vectors);
+		sortedVectors.sort((v1,v2) -> new Float(v1.getDistance(target)).compareTo(v2.getDistance(target)));
+		return sortedVectors;
 	}
 	
 

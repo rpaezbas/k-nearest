@@ -15,6 +15,11 @@ public class Vector {
 		}
 		this.values = values;
 	}
+	
+	public float getDistance(Vector vector) {
+		return (float) Math.sqrt(Math.pow(this.getValues()[0] - vector.getValues()[0], 2)
+				+ Math.pow(this.getValues()[1] - vector.getValues()[1], 2));
+	}
 
 	public float[] getValues() {
 		return values;
