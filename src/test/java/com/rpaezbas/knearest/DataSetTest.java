@@ -31,6 +31,7 @@ public class DataSetTest extends TestCase {
 		vectors.add(new Vector(new float[] { 1.0F, 15.0F }));
 		vectors.add(new Vector(new float[] { 5.0F, 3.0F }));
 		vectors.add(new Vector(new float[] { 8.0F, 8.0F }));
+		vectors.add(new Vector(new float[] { 60.0F, 60.0F }));
 		dataSet = new DataSet(vectors);
 		target = new Vector(new float[] { 4.0F, 3.0F });
 		epsilon = 0.001F;
@@ -54,12 +55,21 @@ public class DataSetTest extends TestCase {
 
 	public void testCalculateNearest() {
 
-		ArrayList<Vector> nearestVectors = dataSet.calculateNearest(target, 3);
-		
+		ArrayList<Vector> nearestVectors = dataSet.calculateNearest(target, 4);
 		assertEquals(nearestVectors.get(0).getValues()[0],5.0F,epsilon); //The nearest point to 4,3 is 5,3
 		assertEquals(nearestVectors.get(1).getValues()[0],2.0F,epsilon); //The second is 2,2
 		assertEquals(nearestVectors.get(2).getValues()[0],8.0F,epsilon); //The third is 8,8 
-		// assertEquals(nearestVectors.get(3).getValues()[0],1.0F,epsilon); //The third is 8,8 
+		assertEquals(nearestVectors.get(3).getValues()[0],1.0F,epsilon); //The forth is 1,15 
+		
+		nearestVectors = dataSet.calculateNearest(target, 5);
+		assertEquals(nearestVectors.get(0).getValues()[0],5.0F,epsilon); //The nearest point to 4,3 is 5,3
+		assertEquals(nearestVectors.get(1).getValues()[0],2.0F,epsilon); //The second is 2,2
+		assertEquals(nearestVectors.get(2).getValues()[0],8.0F,epsilon); //The third is 8,8 
+		assertEquals(nearestVectors.get(3).getValues()[0],1.0F,epsilon); //The forth is 1,15 
+		assertEquals(nearestVectors.get(4).getValues()[0],60.0F,epsilon); //The fifth is 60,60 
+		
+		nearestVectors = dataSet.calculateNearest(target, 1);
+		assertEquals(nearestVectors.get(0).getValues()[0],5.0F,epsilon); //The nearest point to is 5,3
 	}
 
 }

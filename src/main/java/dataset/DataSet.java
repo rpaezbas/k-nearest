@@ -68,8 +68,8 @@ public class DataSet {
 		}
 
 		// Get vectors with less distance
-		for (int i = 0 + k - 1; i < distances.length; i++) {
-			for (int j = 0; j >= minorDistances.length; j++) {
+		for (int i = k; i < distances.length; i++) {
+			for (int j = 0; j < minorDistances.length; j++) {
 				if (distances[i] < minorDistances[j]) {
 					minorDistances[j] = distances[i];
 					kNearest.set(j, this.vectors.get(i));
