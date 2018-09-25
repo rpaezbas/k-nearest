@@ -6,8 +6,7 @@ public class Vector {
 
 	private float[] values;
 
-	public Vector() throws VectorInitializationException {
-		throw new VectorInitializationException("The vector must be initialized with an array of values");
+	public Vector()  {
 	}
 
 	public Vector(float[] values) throws VectorInitializationException {

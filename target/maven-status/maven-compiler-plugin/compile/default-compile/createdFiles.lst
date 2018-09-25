@@ -1,0 +1,8 @@
+rest\JAXRSConfiguration.class
+exceptions\calculateNearestException.class
+dataset\DataSet.class
+rest\DatasetFacade.class
+exceptions\DataSetInitializationException.class
+rest\Resource.class
+vector\Vector.class
+exceptions\VectorInitializationException.class
