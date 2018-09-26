@@ -41,22 +41,6 @@ public class DataSetTest{
 	}
 
 	@Test
-	public void testCalculateDistances() {
-
-		float[] distances = dataSet.calculateDistances(target);
-
-		assertEquals(distances.length, vectors.size());
-		assertEquals(distances[0],
-				Math.sqrt(Math.pow(target.getValues()[0] - dataSet.getVectors().get(0).getValues()[0], 2)
-						+ Math.pow(target.getValues()[1] - dataSet.getVectors().get(0).getValues()[1], 2)),
-				epsilon);
-		assertEquals(distances[1],
-				Math.sqrt(Math.pow(target.getValues()[0] - dataSet.getVectors().get(1).getValues()[0], 2)
-						+ Math.pow(target.getValues()[1] - dataSet.getVectors().get(1).getValues()[1], 2)),
-				epsilon);
-	}
-
-	@Test
 	public void testCalculateNearest() throws calculateNearestException {
 
 		ArrayList<Vector> nearestVectors = dataSet.calculateNearest(target, 4);

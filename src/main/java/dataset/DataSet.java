@@ -18,23 +18,6 @@ public class DataSet {
 		this.vectors = vectors;
 	}
 
-
-	public float[] calculateDistances(Vector target) {
-
-		float[] distances = new float[this.vectors.size()];
-		for (int i = 0; i < vectors.size(); i++) {
-			float sum = 0;
-			for (int j = 0; j < target.getValues().length; j++) {
-				float[] vectorX = target.getValues();
-				float[] vectorY = this.vectors.get(i).getValues();
-				sum += Math.pow(vectorX[j] - vectorY[j], 2);
-			}
-			distances[i] = (float) Math.sqrt(sum);
-		}
-		return distances;
-		
-	}
-
 	public ArrayList<Vector> calculateNearest(Vector target, int k) throws calculateNearestException{
 		
 		if(k < 1 || k > this.vectors.size()) {
