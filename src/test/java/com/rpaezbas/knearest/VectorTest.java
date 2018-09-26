@@ -3,6 +3,7 @@ package com.rpaezbas.knearest;
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import dataset.DataSet;
+import exceptions.GetDistanceException;
 import exceptions.VectorInitializationException;
 import org.junit.Test;
 import vector.Vector;
@@ -15,7 +16,7 @@ public class VectorTest{
 	float epsilon = 0.001F; // This is the float error range
 
 	@Test
-	public void testGetDistances() throws VectorInitializationException {
+	public void testGetDistances() throws VectorInitializationException, GetDistanceException {
 		
 		Vector vectorA = new Vector(new float[] { 3.0F, 3.0F });
 		Vector vectorB = new Vector(new float[] { 2.0F, 2.0F });

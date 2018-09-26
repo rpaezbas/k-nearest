@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 import dataset.DataSet;
 import dataset.DatasetFacade;
-import exceptions.calculateNearestException;
+import exceptions.CalculateNearestException;
 import vector.Vector;
 
 @Stateless
@@ -37,7 +37,7 @@ public class Resource {
 			ArrayList<Vector> resultList = dataset.calculateNearest(datasetFacade.getTarget(), datasetFacade.getK());
 			Vector[] resultArray = resultList.toArray(new Vector[resultList.size()]); // Conversion to Vector[]																					
 			return Response.status(200).entity(resultArray).build();
-		} catch (calculateNearestException e) {
+		} catch (CalculateNearestException e) {
 			return Response.status(200).entity("K is not correct").build();
 		}
 

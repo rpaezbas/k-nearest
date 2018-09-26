@@ -3,7 +3,7 @@ package dataset;
 import java.util.ArrayList;
 
 import exceptions.DataSetInitializationException;
-import exceptions.calculateNearestException;
+import exceptions.CalculateNearestException;
 import vector.Vector;
 
 public class DataSet {
@@ -18,10 +18,14 @@ public class DataSet {
 		this.vectors = vectors;
 	}
 
-	public ArrayList<Vector> calculateNearest(Vector target, int k) throws calculateNearestException{
+	public ArrayList<Vector> calculateNearest(final Vector target,final int k) throws CalculateNearestException{
 		
 		if(k < 1 || k > this.vectors.size()) {
-			throw new calculateNearestException("k parameter must be a between 1 and the number of vectors in the dataset (vectors.size())");
+			throw new CalculateNearestException("k parameter must be a between 1 and the number of vectors in the dataset (vectors.size())");
+		}
+		
+		if(target == null) {
+			throw new CalculateNearestException("The target is null");
 		}
 
 		ArrayList<Vector> sortedVectors = new ArrayList<>(this.vectors);

@@ -1,10 +1,10 @@
 package exceptions;
 
-public class calculateNearestException extends Exception { 
+public class CalculateNearestException extends Exception { 
    
 	private static final long serialVersionUID = 1L;
 
-	public calculateNearestException(String errorMessage) {
+	public CalculateNearestException(String errorMessage) {
         super(errorMessage);
     }
 }

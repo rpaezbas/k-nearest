@@ -1,6 +1,6 @@
 rest\JAXRSConfiguration.class
-exceptions\calculateNearestException.class
 dataset\DataSet.class
+exceptions\CalculateNearestException.class
 exceptions\DataSetInitializationException.class
 rest\Resource.class
 vector\Vector.class
