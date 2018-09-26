@@ -29,7 +29,7 @@ public class DataSet {
 		
 		ArrayList<Vector> sortedVectorsSublist = new ArrayList<>();
 		for(int i = 0; i < k; i++) {
-			sortedVectorsSublist.set(i, sortedVectors.get(i));
+			sortedVectorsSublist.add(sortedVectors.get(i));
 		}
 		
 		return sortedVectorsSublist;
