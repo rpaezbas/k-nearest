@@ -1,8 +1,11 @@
 package vector;
 
+import java.io.Serializable;
+
+import exceptions.GetDistanceException;
 import exceptions.VectorInitializationException;
 
-public class Vector {
+public class Vector implements Serializable{
 
 	private float[] values;
 
@@ -17,6 +20,10 @@ public class Vector {
 	}
 	
 	public float getDistance(final Vector vector){
+		
+		if(vector == null) {
+			throw new GetDistanceException("The vector is null");
+		}
 		
 		return (float) Math.sqrt(Math.pow(this.getValues()[0] - vector.getValues()[0], 2)
 				+ Math.pow(this.getValues()[1] - vector.getValues()[1], 2));

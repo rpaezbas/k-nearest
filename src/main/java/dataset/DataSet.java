@@ -1,9 +1,8 @@
 package dataset;
 
 import java.util.ArrayList;
-
-import exceptions.DataSetInitializationException;
 import exceptions.CalculateNearestException;
+import exceptions.DataSetInitializationException;
 import vector.Vector;
 
 public class DataSet {

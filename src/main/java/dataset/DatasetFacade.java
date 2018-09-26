@@ -1,11 +1,13 @@
 package dataset;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
 import vector.Vector;
 
-@Entity
-public class DatasetFacade {
+public class DatasetFacade implements Serializable{
+
+	private static final long serialVersionUID = 2360992297716182605L;
 	
+	private String name;
 	private Vector[] vectors;
 	private Vector target;
 	private int k;
@@ -27,6 +29,12 @@ public class DatasetFacade {
 	}
 	public void setK(int k) {
 		this.k = k;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

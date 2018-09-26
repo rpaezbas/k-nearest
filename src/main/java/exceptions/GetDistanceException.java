@@ -1,6 +1,6 @@
 package exceptions;
 
-public class GetDistanceException extends Exception{
+public class GetDistanceException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 

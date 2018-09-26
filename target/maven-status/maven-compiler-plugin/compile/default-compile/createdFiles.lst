@@ -1,7 +1,10 @@
 rest\JAXRSConfiguration.class
+exceptions\GetDistanceException.class
 dataset\DataSet.class
 exceptions\CalculateNearestException.class
 exceptions\DataSetInitializationException.class
 rest\Resource.class
 vector\Vector.class
+util\Config.class
+dataset\DatasetFacade.class
 exceptions\VectorInitializationException.class
