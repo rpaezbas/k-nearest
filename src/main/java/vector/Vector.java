@@ -7,6 +7,7 @@ import exceptions.VectorInitializationException;
 
 public class Vector implements Serializable{
 
+	private static final long serialVersionUID = -1190255226278518719L;
 	private float[] values;
 
 	public Vector()  {

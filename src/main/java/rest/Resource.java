@@ -29,7 +29,7 @@ public class Resource {
 	Properties properties = new Properties();
 
 	@POST
-	@Path("/")
+	@Path("/calculate")
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response calculateKnearest(final DatasetFacade datasetFacade) {
