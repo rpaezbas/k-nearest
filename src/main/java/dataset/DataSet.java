@@ -26,7 +26,13 @@ public class DataSet {
 
 		ArrayList<Vector> sortedVectors = new ArrayList<>(this.vectors);
 		sortedVectors.sort((v1,v2) -> new Float(v1.getDistance(target)).compareTo(v2.getDistance(target)));
-		return sortedVectors;
+		
+		ArrayList<Vector> sortedVectorsSublist = new ArrayList<>();
+		for(int i = 0; i < k; i++) {
+			sortedVectorsSublist.set(i, sortedVectors.get(i));
+		}
+		
+		return sortedVectorsSublist;
 	}
 	
 
