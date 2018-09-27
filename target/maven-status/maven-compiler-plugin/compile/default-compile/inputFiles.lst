@@ -4,6 +4,7 @@ C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\util\SerialUtil.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\dataset\DataSet.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\exceptions\GetDistanceException.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\exceptions\VectorInitializationException.java
+C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\timer\CleanerTimer.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\rest\JAXRSConfiguration.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\dataset\DatasetFacade.java
 C:\Users\rpaezbas\eclipse-workspace\knearest\src\main\java\vector\Vector.java

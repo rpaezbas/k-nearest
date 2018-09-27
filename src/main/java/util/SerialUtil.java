@@ -26,7 +26,6 @@ public class SerialUtil {
 		out.writeObject(datasetFacade);
 		out.close();
 		fileOut.close();
-		System.out.printf("Serialized data is saved in " + util.Config.DATASETS_PATH.getValue() + datasetFacade.getName() + ".ser");
 		return datasetFacade;
 	}
 }
