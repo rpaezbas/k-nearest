@@ -1,11 +1,7 @@
 package rest;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 import javax.ejb.Stateless;
@@ -14,11 +10,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-
 import dataset.DataSet;
 import dataset.DatasetFacade;
 import exceptions.CalculateNearestException;
-import util.Config;
+import util.SerialUtil;
 import vector.Vector;
 
 @Stateless
@@ -57,16 +52,8 @@ public class Resource {
 	@Produces("application/json")
 	public Response serializeDataset(final DatasetFacade datasetFacade) throws FileNotFoundException, IOException {
 		
-		try {
-			// FileOutputStream <- ObjectOutputStream <- datasetFade  
-			FileOutputStream fileOut = new FileOutputStream(
-					Config.DATASETS_PATH.getValue() + datasetFacade.getName() + ".ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(datasetFacade);
-			out.close();
-			fileOut.close();
-			System.out.printf(
-					"Serialized data is saved in " + Config.DATASETS_PATH.getValue() + datasetFacade.getName() + ".ser");
+		try { 
+			SerialUtil.serializeDataset(datasetFacade);
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
@@ -81,14 +68,7 @@ public class Resource {
 	public Response calculateKnearestWithSerialized(final DatasetFacade datasetFacade) {
 
 		try {
-			// Open serialized dataset
-			FileInputStream fileIn = new FileInputStream(
-					Config.DATASETS_PATH.getValue() + datasetFacade.getName() + ".ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			DatasetFacade serializedDataset = (DatasetFacade) in.readObject();
-			in.close();
-			fileIn.close();
-			// Set the vectors of the serialized dataset
+			DatasetFacade serializedDataset = SerialUtil.deserializeDataset(datasetFacade.getName());
 			datasetFacade.setVectors(serializedDataset.getVectors());
 			return this.calculateKnearest(datasetFacade);
 		} catch (IOException | ClassNotFoundException i) {

@@ -4,10 +4,10 @@ public enum Config {
 	
 	DATASETS_PATH("C:/users/rpaezbas/datasets/");
 	
-	String value;
+	private final String value;
 	
 	Config(String value) {
-		value = this.value;
+		this.value = value;
 	}
 	
 	public String getValue() {
