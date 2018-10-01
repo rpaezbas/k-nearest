@@ -2,15 +2,13 @@ package dataset;
 
 import java.util.ArrayList;
 import exceptions.CalculateNearestException;
-import exceptions.DataSetInitializationException;
 import vector.Vector;
 
 public class DataSet {
 
 	private ArrayList<Vector> vectors;
 
-	public DataSet() throws DataSetInitializationException {
-		throw new DataSetInitializationException("The vector must be initialized with an ArrayList of vectors");
+	public DataSet() {
 	}
 
 	public DataSet(ArrayList<Vector> vectors) {

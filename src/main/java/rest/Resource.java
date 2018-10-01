@@ -4,12 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
+
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
 import dataset.DataSet;
 import dataset.DatasetFacade;
 import exceptions.CalculateNearestException;
@@ -19,9 +21,14 @@ import vector.Vector;
 @Stateless
 @Path("/dataset")
 public class Resource {
-	
+
 	Response response;
 	Properties properties = new Properties();
+	private DataSet dataset = new DataSet();
+	
+	
+	public Resource() {
+	}
 
 	@POST
 	@Path("/calculate")
@@ -34,7 +41,7 @@ public class Resource {
 			vectorsList.add(vector);
 		}
 
-		DataSet dataset = new DataSet(vectorsList);
+		this.dataset.setVectors(vectorsList);
 
 		try {
 			ArrayList<Vector> resultList = dataset.calculateNearest(datasetFacade.getTarget(), datasetFacade.getK());
@@ -51,13 +58,8 @@ public class Resource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response serializeDataset(final DatasetFacade datasetFacade) throws FileNotFoundException, IOException {
-		
-		try { 
-			SerialUtil.serializeDataset(datasetFacade);
-		} catch (IOException i) {
-			i.printStackTrace();
-		}
 
+		SerialUtil.serializeDataset(datasetFacade);
 		return Response.status(200).entity(datasetFacade).build();
 	}
 
@@ -77,5 +79,13 @@ public class Resource {
 		}
 
 	}
+	
+    void setDataset(DataSet dataset) {
+        this.dataset = dataset;
+    }
+	
+	public DataSet getDataset() {
+        return this.dataset;
+    }
 
 }
